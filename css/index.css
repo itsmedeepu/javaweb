@@ -1,0 +1,188 @@
+body{
+
+    background-color: aliceblue;
+   
+}
+
+.container{
+
+    box-shadow: 5px 5px 5px grey;
+    border: 2px solid grey;
+
+}
+
+.container .info{
+    display: flex;
+    margin-bottom: 20px;
+    box-shadow: 10px 10px 10px grey;
+  
+}
+
+.container h1{
+    text-align: center;
+    color: blue;
+    background-color: burlywood;
+    text-shadow: 10px 10px 10px wheat;
+    
+}
+
+.summary{
+    width: 500px;
+    position: sticky;
+    top: 0;
+}
+
+.summary h4{
+    font-size: 24px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.summary ol li{
+
+    font-size: 18px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: lightblue;
+    color: blue;
+    border-radius: 10px;
+}
+.summary ol li a{
+    text-decoration: none;
+}
+
+.summary ol li:hover{
+
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+.container h3{
+
+    text-decoration:underline;
+    text-align: center;
+    color: orange;
+}
+
+.container .summary{
+    border: 2px solid red;
+    box-shadow: 10px 10px 5px grey;
+    margin-left: 10px;
+    height: 400px;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+
+}
+
+.container .content{
+
+    border: 2px solid blue;
+    margin-left: 30px;
+    margin-right: 3px;
+    width: 1200px;
+    box-shadow: 10px 10px 10px grey;
+}
+.container .content h2{
+    text-align: center;
+    text-decoration: underline;
+    font-size: 24px;;
+}
+.container .content{
+    text-align: justify;
+    padding: 10px;
+
+
+}
+.content section{
+
+   border-bottom: 2px solid red;
+}
+.content section .contid{
+
+    font-size: 24px;
+    text-decoration: underline;
+    font-weight: bolder;
+    color: darkviolet;
+}
+
+.content section ul {
+
+    list-style: square;
+    line-height: 30px;
+}
+
+.content section ul li{
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.content section p{
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.content section ul .warn{
+
+    color: red;
+    text-decoration: underline;
+}
+
+.content section ol li pre{
+
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+table,th,td {
+    border: 1px solid black;
+    border-collapse: collapse;
+
+  }
+
+table th{
+    text-align: center;
+    background-color: red;
+    color:white;
+    font-size: 24px;
+    font-weight: bold;
+}
+table td{
+    font-size: 18px;
+    padding: 10px;
+    background-color: #fff3cd;
+}
+
+.mainfoot {
+
+    background-color: black;
+    color: aliceblue;
+    height: auto;
+    font-size: 18px;
+    text-align: center;
+    
+
+}
+.mainfoot p a{
+    color: white;
+    text-decoration: underline;
+}
+
+.mainfoot p:hover{
+
+    cursor: pointer;
+}
+.modifi{
+    text-align: right;
+    margin-bottom: 5px;;
+}
+
+.container .info .summary li .imgt{
+    width: 20px;
+    height: 10px;
+}
+.container .info .summary li .imgtn {
+    width: 20px;
+    height: 20px;
+}

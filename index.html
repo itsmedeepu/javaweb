@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="RAJ">
+    <meta name="viewport" content="width=device-width, initial-scale=0.1">
+    <title>JAVA NOTES </title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+
+    <div class="container">
+       
+        <h1>JAVA NOTES</h1>
+        <div class="info">
+        <div class="summary">
+            <h4>Topics Covered </h4>
+            <ol>
+                <li><img src="./img/arrow.gif" class="imgt" alt="arrow"><a href="#1"> Super keyword</a></li>
+                <li><img src="./img/arrow.gif" class="imgt" alt="arrow"><a href="#2">Super()</a></li>
+                
+                <li><img src="./img/arrow.gif" class="imgt" alt="arrow"><a href="#3">constructor chaining</a><img class="imgtn" src="./img/newicon.gif" alt="new"></li>
+                <li><img src="./img/arrow.gif" class="imgt" alt="arrow"><a href="#4">Differences(this,this(),super,super())</a><img class="imgtn" src="./img/newicon.gif" alt="new"></li>
+                <li><img src="./img/arrow.gif" class="imgt" alt="arrow"><a href="#5">Final keyword</a><img class="imgtn" src="./img/newicon.gif" alt="new"></li>
+                <footer>
+                    <p>last updated on 04-11-2022(10:30 PM)</p>
+                </footer>
+                
+            </ol>
+        </div>
+        <div class="content">
+            <h2>NOTES</h2>
+            <section id="1">
+                <p class="contid">1.super Keyword: </p>
+                <ul>
+                    <li>super Keyword is used to access the properties of Parent class or super class or base class. </li>
+                    <li>Is-a relationship(inheritance) is Mandatory to use super Keyword.</li>
+                    <li>super keywords can be used inside the Non-Static methods. </li>
+                
+                    <li>super keyword cannot be used inside the static methods. </li>
+                    <li>super Keyword can be any line of method or constructor.</li>
+                    <li><span class="warn">Note:</span> When super class and subclass properties(data-members and Memberfunctions) are same then to acess superclass properties we make use of super Keyword.</li>
+                    
+                </ul>
+
+                <p>Test Cases</p>
+
+              
+                <ol>
+                    <li>Test Case 1 <pre>
+                        <code>
+                            class A
+                            {
+                                int i=88;
+                            }
+                            class B extends 
+                            {
+                                int i=101;
+                                int j=11;
+
+                                public void m1()
+                                {
+                                    System.out.println(this.i);//101
+                                    System.out.println(this.j);//11
+                                    System.out.printl(super.i);//88
+
+                                }
+
+                            }
+                           public class Test{
+
+                                public static void main(String[] args){
+                                    B b = new B();
+                                    b.m1();
+                                }
+                            }
+
+        
+                        </code></pre> </li>
+                    <li>Test Case 2
+                        <pre>
+                            <code>
+                                class A
+                                {
+                                    public void m1()
+                                    {
+                                        System.out.println("m1() for class A");
+                                    }
+                                }
+                                class B extends A
+                                {
+
+                                    @Override
+                                    public void m1()
+                                    {
+                                        super.m1();
+                                        System.out.println("m1() defined for class B");
+                                    }
+                                }
+                               public  class Test
+                                {
+                                    public static void main(String[] args){
+
+                                        B b =  new B();
+                                        b.m1();
+                                    }
+                                }
+                                output:
+                                m1() for class A
+                                m1() defined for class B
+
+                            </code>
+                        </pre>
+                    </li>
+                    <li>Test Case 3
+
+                        <pre>
+                            <code>
+                                class A
+                                {
+                                    int i;
+                                    int j;
+                                    public A()
+                                    {
+
+                                    }
+                                    public A(int i,int j)
+                                    {
+                                        this.i=i;
+                                        this.j=j;
+                                    }
+                                    public void displayA()
+                                    {
+                                        System.out.println(i+" "+j);
+                                    }
+                                }
+                                class B extends A
+                                {
+                                    int i;
+                                    int j;
+                                    public B(int i,int j)
+                                    {
+                                        super.i=i;
+                                        super.j=j;
+                                        this.i=i;
+                                        this.j=j;
+
+                                    }
+                                    public void displayB()
+                                    {
+                                        System.out.println(i+" "+j);
+                                    }
+                                }
+
+                                public class Test
+                                {
+                                    public static void main(String[] args)
+                                    {
+                                        B b = new B(3,4);
+                                        b.displayB();
+                                        b.displayA();
+                                    }
+                                }
+
+                                output:
+                                3 4
+                                3 4
+                            </code>
+                        </pre>
+                    </li>
+                
+                </ol>
+               
+            </section>
+            <section id="2">
+                <p class="contid">2.super() </p>
+                <ul>
+                    <li>super() is used to call the constructor of superclass.</li>
+                    <li>Is-a (inheritance) is Mandatory to use super() Keyword.</li>
+                    <li>super() is used only inside the constructor. </li>
+                
+                    <li>super()  should be first line executed inside the constructor. </li>
+                    <li>for no-argument constructor or parametrized constructor super() with no arguments is executed implicitly by jvm. </li>
+                    <li>If we have to call super() with arguments it is not a implict call rather we should call it explicitly.</li>
+                    <li><span class="warn">Note:</span> this()  and super() cannot be used together in the same constructor</li>
+                </ul>
+
+                <p>Test Cases</p>
+
+              
+                <ol>
+                    <li>Test Case 1 <pre>
+                        <code>
+                            class A
+                            {
+                                public A()
+                                {
+                                    System.out.println("good morning");
+                                }
+                            }
+                            class B extends A
+                            {
+                                
+                                public void B()
+                                {
+                                    super();
+                                    System.out.println("good evening");
+                                }
+
+                            }
+                           public class Test{
+
+                                public static void main(String[] args){
+                                    B b = new B();
+                                
+                                }
+                            }
+
+                            output:
+                            good morning
+                            good evening
+
+        
+                        </code></pre> </li>
+                    <li>Test Case 2
+                        <pre>
+                            <code>
+                                class A
+                                {
+                                    public A(int i)
+                                    {
+                                        System.out.println("good morning");
+                                    }
+                                }
+                                class B extends A
+                                {
+                                    public void B()
+                                    {
+                                        //call explicitly by passing value
+                                        super(45);
+                                        System.out.println("good evening");
+                                    }
+    
+                                   
+                                }
+                               public  class Test
+                                {
+                                    public static void main(String[] args){
+
+                                        new B();
+                                        
+                                    }
+                                }
+                                output:
+                                good morning
+                                good evening
+
+                            </code>
+                        </pre>
+                    </li>
+                    <li> Test Case 3
+                        <pre>
+                            <code>
+                                class A
+                                {
+                                    int i;
+                                    int j;
+                                    public A(int i,int j)
+                                    {
+                                        super();
+                                        this.i=i;
+                                        this.j=j;
+
+                                    }
+                                    public void displayA()
+                                    {
+                                        System.out.println(i+" "+j);
+
+                                    }
+                                }
+                                class B extends A
+                                {
+                                    int i;
+                                    int j;
+                                    public B(int i,int j)
+                                    {
+                                        super(i,j);
+                                        this.i=i;
+                                        this.j=j;
+                                    }
+                                    public void displayB()
+                                    {
+                                        System.out.println(i+" "+j);
+                                    }
+                                }
+                                public class Test
+                                {
+                                    public static void main(String[] args)
+                                    {
+                                        B b= new B(4,5);
+                                        b.displayA();
+                                        B.displayB();
+                                    }
+                                    
+                                }
+
+                                output
+                                4 5
+                                4 5
+
+
+                            </code>
+                        </pre>
+                    </li>
+                   
+                
+                </ol>
+               
+            </section>
+            <section id="3">
+                <p class="contid">3.Constructor Chaining</p>
+                <p>Passing the values from sub class constructor to superclass constructor is known as constructor chaining.</p>
+
+            </section>
+            <section id="4">
+                <p class="contid">3.Differences</p>
+                <table id="diftab">
+                    <tr>
+                        <th>
+                            SI.NO
+                        </th>
+                 
+                    <th>
+                        this
+                    </th>
+                    <th>
+                        super
+                    </th>
+                    </tr>
+                    <tr>
+                        <td>
+                       1.
+                        </td>
+                        <td>
+                            this keyword is used to point the current instance(object).
+                        </td>
+                        <td>
+                            super keyword is used to access the properties of super class.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>Is-a(inheritance) relationship is not required.</td>
+                        <td>Is-a relationship is Mandatory.</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>can be used in non-static methods & constructors not in static methods.</td>
+                        <td>can be used in non-static methods & constructors not in static methods.</td>
+                    
+                    </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td>It can be executed in any line of the method or constructor.</td>
+                            <td>It can be executed in any line of the method(or) constructor.</td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <td>this is Implicit or explicit for non-static properties.</td>
+                            <td>super keyword is explicit. </td>
+                        </tr>
+                        <tr>
+                            <th> SI.NO</th>
+                            <th>this()</th>
+                            <th>super()</th>
+                        </tr>
+                        <tr>
+                            <td>
+                           1.
+                            </td>
+                            <td>
+                                this() is used to call constructor from another constructor.
+                            </td>
+                            <td>
+                                super() is used to call constructor of super class from sub class.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>this() is used to pass value from one constructor to another constructor of same class.</td>
+                            <td>super() pass value from subclass to super class. </td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td>this() should be the first line of the contructor.</td>
+                            <td>super() should be first line of the constructor.</td>
+                        
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td>this() only used for constructors not in methods(static or non static).</td>
+                            <td>super() only used for constructors not in methods(static or non static).</td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <td>It is known as constructor calling.</td>
+                            <td>It is known as constructor chaining </td>
+                        </tr>
+                        <tr>
+                            <td>6.</td>
+                            <td>this() is explicit</td>
+                            <td>super() is implicit for default constructors for parametrized constructors super() is explicit.</td>
+                        </tr>
+                        
+
+                </table>
+               
+            </section>
+            <section id="5">
+                <p class="contid">5.final</p>
+                <ul>
+                    <li>final keyword in java is used to provide restrictions by jvm.</li>
+                    <li>final keyword can be used for a variable,methods,classes.</li>
+                    <li>final keyword cannot be used for static methods.</li>
+                    <li>final keyword cannot be used for constructors.</li>
+                </ul>
+            
+            <p class="contid">final keyword</p>
+                <ul>
+                    <li>To convert variable into constant we use final keyword.</li>
+                    <li>Once value is intialized to final variable cannot be re-assigned.</li>
+                    <li>If the final variable is decalared it can be intialized only once.</li>
+                    <li>
+                        final methods cannot be overriden. rather it can be extended from super class to subclass.
+                    </li>
+                   
+                  
+                </ul>
+                <p>Test Cases</p>
+                <ol type="1">
+                    <li>Test case 1 
+                        <pre>
+                            <code>
+                                //final keyword for local variables
+                                public class Tester
+                                {
+                                    public static void main(String[] args)
+                                    {
+                                        final int i;
+                                        int =20;
+                                        System.out.println(i); 
+
+                                    }
+                                }
+                                output 
+                                20
+                            </code>
+                        </pre>
+                    </li>
+                    <li>Test case 
+                        <pre>
+                            <code>
+                                //final keyword for non static methods
+                           class color
+                           {
+                            public final void paint()
+                            {
+                                System.out.println("************");
+                            }
+                           }
+                           class Red extends color
+                           {
+                            @Override
+                            public void paint()
+                            {
+                                System.out.println("++++++++++++++");
+                            }
+                           }
+                           public class Tester
+                           {
+                            public static void main(Strin[] args)
+                            {
+                                Red r= new Red();
+                                r.paint();
+                            }
+                           }
+
+                           output
+                           overriden not possible when method is  final  
+                            </code>
+                        </pre>
+                    </li>
+                </ol>
+                <p class="contid">Final keyword for classes</p>
+                <p>classes with final keyword cannot be extended they are eligible to be sub class not super class.</p>
+                <p>Some classes which cannot be extended</p>
+                <ul>
+                    <li>String</li>
+                    <li>String Builder</li>
+                    <li>String Buffer</li>
+                </ul>
+                <p>Some wrapper classes</p>
+                <ul>
+                    <li>Byte</li>
+                    <li>Short</li>
+                    <li>Integer</li>
+                    <li>Long</li>
+                    <li>Float</li>
+                    <li>Double</li>
+                    <li>Boolean</li>
+                    <li>Char</li>
+                </ul>
+
+            </section>
+             
+        </div>
+       
+    </div>
+    <footer class="mainfoot">
+        
+        <p class="copy">&copy; Made with ❤️ by Deepak(Raj)-<span id="copy"></span></p>
+        <p>Site best viewed in 1280*1080 Google Chrome</p>
+        <p>My Github--<a href="https://github.com/itsmedeepu" target="_blank">click here</a></p>
+    </footer>
+
+       
+
+    </div>
+
+    <script>
+        //for copyright
+        var date =new Date();
+        var year=date.getFullYear();
+        document.getElementById("copy").innerText=year;
+
+    </script>
+
+    
+</body>
+</html>
